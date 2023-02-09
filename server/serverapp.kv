@@ -1,0 +1,47 @@
+<MyLayout>:
+    
+    Image:
+        source:"bg1.gif"
+        size: root.size
+        allow_stretch: True
+	RelativeLayout:
+        
+        pos: self.pos
+		size: root.size
+        Button:
+            
+            
+            size_hint: 0.09, 0.14
+            pos_hint: {'center_x': 0.53, 'center_y': 0.6}
+            on_press: root.on_press()
+            Image:
+            
+                id: stats
+                source:"off.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+        Label:
+            id:devices
+            color:"#B8860B"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.400}
+            font_size: 21
+            
+        Label:
+            color:"#9966CC"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.900}
+            font_size: 90
+            text:"PC Remote Reciever "
+
+        Label:
+            id:server
+            color:"red"
+            text:"Server --> "
+            pos_hint: {'center_x': 0.41, 'center_y': 0.6}
+            font_size: 35
+        Label:
+            id: ip
+            color:"#9966CC"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.750}
+            font_size: 50
+            text:""
+        
