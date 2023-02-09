@@ -1,0 +1,197 @@
+WindowManager:
+	FirstWindow:
+	SecondWindow:
+    ThirdWindow:
+
+<FirstWindow>:
+	name: "first"
+	Image:
+        source:"bg1.jpg"
+        size: root.size
+        allow_stretch: True
+        
+	RelativeLayout:
+        pos: self.pos
+		size: root.size
+		
+		TextInput:
+            id:text
+            text:"192.168.1."
+            multiline: False
+            focused:True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.50, 0.07
+            on_text_validate: root.connect()
+            on_text: root.valide()
+		Label:
+            id: input_sign
+            font_size: 36
+            text: "Enter Server Host Ip_Adress!"
+            color:"green"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+		Button:
+            id:stats
+            disabled:True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            size_hint: 0.18, 0.04
+            on_release: root.connect()
+            Image:
+                id: connection_img
+                source:"connect.jpg"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+        Spinner:
+            id: spinner_id
+            disabled: True
+            on_text: root.spinner_clicked(spinner_id.text)
+            values: ["Control", "Stream"]
+            size_hint: None, None
+            size: 50, 30
+            pos_hint:{'center_x':0.5, 'center_y': 0.12}
+
+        
+        Button:
+            text:"Quit"
+            on_release: root.quit()
+            pos_hint: {'center_x': 0.5, 'center_y': 0.05}
+            size_hint: 0.23, 0.07
+
+
+<SecondWindow>:
+	name: "second"
+	Image:
+        source:"bg1.jpg"
+        size: root.size
+        allow_stretch: True
+	RelativeLayout:
+        pos: self.pos
+		size: root.size
+        Spinner:
+            id: spinner_id
+            on_text: root.spinner_clicked(spinner_id.text)
+            values: [ "Stream","Leave"]
+            size_hint: None, None
+            size: 50, 30
+            pos_hint:{'center_x':0.5, 'center_y': 0.12}
+		ToggleButton:
+            id:speed
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+            size_hint: 0.25, 0.15
+            text:"Speed up!"
+            on_state: root.speed()
+		Button:
+            id:right_click
+            text:"right click mouse"
+            pos_hint: {'center_x': 0.8, 'center_y': 0.4}
+            size_hint: 0.25, 0.15
+            on_press: root.right_click()
+        Button:
+            id:left_click
+            text: "left click mouse"
+            pos_hint: {'center_x': 0.2, 'center_y': 0.4}
+            size_hint: 0.25, 0.15
+            on_press: root.left_click()
+        Button:
+            id: up
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint: 0.18, 0.085
+            on_press:root.up_press()
+            on_release:root.up_release()
+            Image:
+                id: up_img
+                source:"up_normal.jpg"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+        Button:
+            id: left
+            pos_hint: {'center_x': 0.25, 'center_y': 0.55}
+            size_hint: 0.18, 0.085
+            on_press:root.left_press()
+            on_release:root.left_release()
+            Image:
+                id: left_img
+                source:"left_normal.jpg"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+            
+             
+        Button:
+            id: right
+            pos_hint: {'center_x': 0.75, 'center_y': 0.55}
+            size_hint: 0.18, 0.085
+            on_press:root.right_press()
+            on_release:root.right_release()
+            Image:
+                id: right_img
+                source:"right_normal.jpg"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+        Button:
+            id: down
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            size_hint: 0.18, 0.085
+            on_press:root.down_press()
+            on_release:root.down_release()
+            Image:
+                id: down_img
+                source:"down_normal.jpg"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+        TextInput:
+            id: sendingmsg
+            multiline:False
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            size_hint: 0.7, 0.15
+            on_text_validate:root.text(self)
+        Button:
+            id:enter
+            text:"enter"
+            pos_hint: {'center_x': 0.8, 'center_y': 0.7}
+            size_hint: 0.25, 0.15
+            on_press: root.enter()
+        Button:
+            id:backspace
+            text: "backspace"
+            pos_hint: {'center_x': 0.2, 'center_y': 0.7}
+            size_hint: 0.25, 0.15
+            on_press: root.backspace()
+        Button:
+            id:scrollup
+            text: "scrollup"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.26}
+            size_hint: 0.25, 0.06
+            on_press: root.scrollup()
+        Button:
+            id:scrolldown
+            text: "scrolldown"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            size_hint: 0.25, 0.06
+            on_press: root.scrolldown()
+		
+
+<ThirdWindow>:
+	name: "third"    
+	Image:
+        id: live
+        source:"recieve.png"
+        size: root.size
+        allow_stretch: True
+	RelativeLayout:
+        pos: self.pos
+		size: root.size
+        Spinner:
+            id: spinner_id
+            on_text: root.spinner_clicked(spinner_id.text)
+            values: [ "Control","Leave"]
+            size_hint: None, None
+            size: 50, 30
+            pos_hint:{'center_x':0.5, 'center_y': 0.12}
+		
+		Button:
+            id:streamupdate
+            text:"update"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.05}
+            size_hint: 0.10, 0.05
+            on_press: root.live_stream()
+        
